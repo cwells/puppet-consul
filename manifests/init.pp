@@ -153,6 +153,7 @@
 #    }
 #
 class consul (
+  String $version,
   Hash $acls                                 = $consul::params::acls,
   $arch                                      = $consul::params::arch,
   $archive_path                              = $consul::params::archive_path,
@@ -193,8 +194,7 @@ class consul (
   Boolean $service_enable                    = $consul::params::service_enable,
   Enum['stopped', 'running'] $service_ensure = $consul::params::service_ensure,
   Hash $services                             = $consul::params::services,
-  $user                                      = $consul::params::user,
-  $version                                   = $consul::params::version,
+  String $user                               = $consul::params::user,
   Hash $watches                              = $consul::params::watches,
   Optional[String] $shell                    = $consul::params::shell,
   Boolean $enable_beta_ui                    = false,
