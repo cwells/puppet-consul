@@ -201,7 +201,7 @@ class consul (
   Boolean $allow_binding_to_root_ports       = false,
 ) inherits consul::params {
 
-  notify { 'consul version': message = $version}
+  notify { 'consul version': message => $version}
 
   $real_download_url = pick(
     $download_url,
