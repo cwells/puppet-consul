@@ -52,6 +52,8 @@ class consul::params {
     default   => '/etc/consul'
   }
 
+  $data_dir = '/opt/consul'
+
   $os = downcase($facts['kernel'])
 
   case $facts['os']['name'] {
