@@ -13,8 +13,7 @@ User=<%= scope.lookupvar('consul::user') %>
 Group=<%= scope.lookupvar('consul::group') %>
 ExecStart=<%= scope.lookupvar('consul::bin_dir') %>/consul agent \
   -config-dir <%= scope.lookupvar('consul::config_dir') %> \
-  -data-dir <%= scope.lookupvar('consul::data_dir') %> \
-  <%= scope.lookupvar('consul::extra_options') %>
+  -data-dir <%= scope.lookupvar('consul::data_dir') %> <%= scope.lookupvar('consul::extra_options') %>
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 LimitNOFILE=131072
