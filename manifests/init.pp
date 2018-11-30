@@ -164,6 +164,7 @@ class consul (
   Hash $checks                               = $consul::params::checks,
   Hash $config_defaults                      = $consul::params::config_defaults,
   $config_dir                                = $consul::params::config_dir,
+  $data_dir                                  = $consul::params::data_dir,
   Hash $config_hash                          = $consul::params::config_hash,
   $config_mode                               = $consul::params::config_mode,
   $docker_image                              = $consul::params::docker_image,
@@ -215,12 +216,6 @@ class consul (
     $user_real = $user
     $group_real = $group
     $init_style_real = $init_style
-  }
-
-  if $config_hash_real['data_dir'] {
-    $data_dir = $config_hash_real['data_dir']
-  } else {
-    $data_dir = undef
   }
 
   if ($config_hash_real['ports'] and $config_hash_real['ports']['http']) {
