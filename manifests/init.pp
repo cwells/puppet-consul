@@ -201,10 +201,12 @@ class consul (
   Boolean $allow_binding_to_root_ports       = false,
 ) inherits consul::params {
 
-  # lint:ignore:140chars
-  $real_download_url    = pick($download_url, "${download_url_base}${version}/${package_name}_${version}_${os}_${arch}.${download_extension}")
-  # lint:endignore
+  notify { 'consul version': message = $version}
 
+  $real_download_url = pick(
+    $download_url,
+    "${download_url_base}${version}/${package_name}_${version}_${os}_${arch}.${download_extension}"
+  )
   $config_hash_real = deep_merge($config_defaults, $config_hash)
 
   if $install_method == 'docker' {
