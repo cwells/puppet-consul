@@ -3,12 +3,10 @@ Description=Consul Agent
 After=network.target
 
 [Service]
-<% if @allow_binding_to_root_ports == true -%>
+<% if @allow_binding_to_root_ports -%>
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 <% end -%>
-<% if @enable_beta_ui == true -%>
-Environment=CONSUL_UI_BETA=true
-<% end -%>
+Environment=CONSUL_UI_BETA=<%= @enable_beta_ui || false %>
 User=<%= scope.lookupvar('consul::user') %>
 Group=<%= scope.lookupvar('consul::group') %>
 ExecStart=<%= scope.lookupvar('consul::bin_dir') %>/consul agent \

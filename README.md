@@ -35,9 +35,9 @@ To set up a single consul server, with several agents attached:
 On the server:
 ```puppet
 class { '::consul':
+  data_dir    => '/opt/consul',
   config_hash => {
     'bootstrap_expect' => 1,
-    'data_dir'         => '/opt/consul',
     'datacenter'       => 'east-aws',
     'log_level'        => 'INFO',
     'node_name'        => 'server',
@@ -48,8 +48,8 @@ class { '::consul':
 On the agent(s):
 ```puppet
 class { '::consul':
+  data_dir    => '/opt/consul',
   config_hash => {
-    'data_dir'   => '/opt/consul',
     'datacenter' => 'east-aws',
     'log_level'  => 'INFO',
     'node_name'  => 'agent',
@@ -60,11 +60,11 @@ class { '::consul':
 Disable install and service components:
 ```puppet
 class { '::consul':
+  data_dir       => '/opt/consul',
   install_method => 'none',
   init_style     => false,
   manage_service => false,
   config_hash => {
-    'data_dir'   => '/opt/consul',
     'datacenter' => 'east-aws',
     'log_level'  => 'INFO',
     'node_name'  => 'agent',
@@ -80,10 +80,10 @@ To install and run the Web UI on the server, include `ui => true` in the
 the default `127.0.0.1`, for example:
 ```puppet
 class { '::consul':
+  data_dir    => '/opt/consul',
   config_hash => {
     'bootstrap_expect' => 1,
     'client_addr'      => '0.0.0.0',
-    'data_dir'         => '/opt/consul',
     'datacenter'       => 'east-aws',
     'log_level'        => 'INFO',
     'node_name'        => 'server',
@@ -265,7 +265,7 @@ This provider allows you to manage key/value pairs. It tries to be smart in two 
 These parameters are mandatory when using `consul_key_value`:
 
 * `name` Name of the key/value object. Path in key/value store.
-* `value` value of the key. 
+* `value` value of the key.
 
 The optional parameters only need to be specified if you require changes from default behaviour.
 
@@ -295,9 +295,9 @@ class { '::consul':
   bin_dir     => 'C:/Consul',
   user        => 'Administrator',
   group       => 'Administrators',
+  data_dir    => 'C:/Consul',
   config_hash => {
     'bootstrap_expect' => 1,
-    'data_dir'         => 'C:/Consul',
     'datacenter'       => 'dc1',
     'log_level'        => 'INFO',
     'node_name'        => 'server',
@@ -316,9 +316,9 @@ This telemetry information can be used for debugging or otherwise getting a bett
 ##Usage
 ```puppet
 class { '::consul':
+  data_dir    => '/opt/consul',
   config_hash => {
     'bootstrap_expect' => 1,
-    'data_dir'         => '/opt/consul',
     'datacenter'       => 'east-aws',
     'log_level'        => 'INFO',
     'node_name'        => 'server',
