@@ -75,7 +75,7 @@ define consul::service(
     owner   => $consul::user_real,
     group   => $consul::group_real,
     mode    => $consul::config_mode,
-    content => to_json_pretty($service_hash)
+    content => $service_hash,
     require => File[$consul::config_dir],
   } ~> Class['consul::reload_service']
 }
