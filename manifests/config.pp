@@ -112,7 +112,7 @@ class consul::config(
     owner   => $::consul::user_real,
     group   => $::consul::group_real,
     mode    => $::consul::config_mode,
-    content => $config_hash,
+    content => to_json_pretty($config_hash),
     require => File[$::consul::config_dir]
   }
 }
