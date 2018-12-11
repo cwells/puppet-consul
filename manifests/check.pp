@@ -96,7 +96,7 @@ define consul::check(
     owner   => $consul::user_real,
     group   => $consul::group_real,
     mode    => $consul::config_mode,
-    content => consul_sorted_json($check_hash, $consul::pretty_config, $consul::pretty_config_indent),
+    content => to_json_pretty($check_hash)
   } ~> Class['consul::reload_service']
 
 }
