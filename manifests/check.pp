@@ -98,5 +98,4 @@ define consul::check(
     mode    => $consul::config_mode,
     content => to_json_pretty($check_hash)
   } ~> Class['consul::reload_service']
-
 }

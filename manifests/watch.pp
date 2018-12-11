@@ -147,5 +147,4 @@ define consul::watch(
     mode    => $consul::config_mode,
     content => to_json_pretty($watch_hash)
   } ~> Class['consul::reload_service']
-
 }
